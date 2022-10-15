@@ -1,4 +1,4 @@
-# Mark Twelve - Is your birthday Palindrome app
+# Mark Thirteen - Is your birthday Palindrome app
 
 This project uses the following tech stack: HTML, CSS and Vanilla Javascript.  
 
