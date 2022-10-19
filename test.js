@@ -148,14 +148,27 @@ function getNextDateCheck(datesNewer)
 // Let’s find out the next palindrome date: 
 
 function getNextPalindromeDates(datesCheck)
-
-var nextDates = getNextDateCheck(datesCheck); 
-var counterForDays = 0;
-
-while(1)
 {
-    counterForDays++;
-    var 
+    var nextDates = getNextDateCheck(datesCheck); 
+    var counterForDays = 0;
+
+    while(1)
+        {
+            counterForDays++;
+            var dateString = getDateasString(nextDates);
+            var resultList = checkPalindromeForAllDatesFormats(dateString);
+
+            for(let i=0; i<resultList.length;i++)
+                { 
+                    if(resultList[i])
+                        {
+                            return[counterForDays, nextDates];
+                        }
+                }
+
+        nextDates = getNextDateCheck(nextDates);        
+        }
+
 }
 
 
@@ -168,9 +181,10 @@ let outputMessage = document.querySelector("#output-message");
 
 function calcPalindrome(e) 
 {
-var birthDay = inputDate.value; 
 
-if (birthDay!== "") { 
+    var birthDay = inputDate.value; 
+
+    if (birthDay!== "") { 
     var birthDayArray = birthDay.split("-");
 
     var yyyy = birthDayArray[0];
@@ -183,7 +197,18 @@ if (birthDay!== "") {
         year: Number(yyyy)
     };
 
-    getDateasString(birthDayObject);
+    var dateString1 = getDateasString(birthDayObject);
+    var list = checkPalindromeForAllDatesFormats(dateString1); 
+    var isPalindromeValue = false; 
+
+    for ( let i=0; i<list.length; i++)
+    {
+        if(list[i]) 
+        { 
+            isPalindromeValue = true; 
+            break; 
+        }
+    }
 }
 
 }
