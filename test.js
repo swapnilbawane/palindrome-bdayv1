@@ -146,7 +146,6 @@ function getNextDateCheck(datesNewer)
 }
 
 // Let’s find out the next palindrome date: 
-
 function getNextPalindromeDates(datesCheck)
 {
     var nextDates = getNextDateCheck(datesCheck); 
@@ -171,7 +170,77 @@ function getNextPalindromeDates(datesCheck)
 
 }
 
+// Let's find out the previous palindrome date: 
+function getPreviousDateCheck(datesOlder)
+{ 
+    var day = datesOlder.day-1; 
+    var month = datesOlder.month;
+    var year = datesOlder.year; 
 
+    var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]; 
+
+    if(day===0)
+    {
+    month--; 
+
+    if ( month === 0 )
+    { 
+        month = 12;
+        day = 31; 
+        year--; 
+
+    }
+        else if( month === 2) 
+        {
+            if(isLeap(year)) 
+            {
+                day = 29; 
+            }
+
+            else 
+            {
+                day = 28; 
+            }
+
+        }
+
+        else { 
+            day = daysInMonth[month-1]; 
+        }
+    }   
+
+    
+
+    return {
+     day: day,
+     month: month,
+     year: year   
+    }
+
+}
+
+// Let's find out previous palindrome date:
+function getPreviousPalindromeDates(datesChecked)
+{ 
+  let previousDates = getPreviousDateCheck(datesChecked);
+  let counterForDaysNew = 0; 
+  
+  while(1)
+  { 
+   counterForDaysNew++; 
+   let dateStringPrev = getDateasString(previousDates);
+   let resultListPrev = checkPalindromeForAllDatesFormats(dateStringPrev); 
+
+   for(let i=0; i<resultListPrev.length; i++)
+   { 
+    if(resultListPrev[i]) { 
+        return[counterForDaysNew,previousDates];
+    }
+   }
+   previousDates = getPreviousDateCheck(previousDates);  
+
+  }
+}
 
 // program begins here: 
 
@@ -209,6 +278,10 @@ function calcPalindrome(e)
             break; 
         }
     }
+
+
+
+    
 }
 
 }
