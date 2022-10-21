@@ -1,0 +1,27 @@
+outerobject.innerobject[keyInsideInnerObject] will give you value of keyInsideInnerObject. 
+
+so for example 
+a { 
+    
+b 
+{c:4}
+    
+}; 
+
+so to access 4 we need to write a.b.c; if we know c. 
+But in most programs c will come from another place so it will be a variable that accepts it during runtime. 
+in that case we should write a.b[variablename]; 
+here [] informs the execution that the value has to come and has not come yet. 
+
+if variablename is not used it will be undefined. 
+
+object is a declaration. We are declaring data type. So we add semicolon at the end of it. 
+
+let and var does not define data type. 
+
+Data Coercion when you assign data to any variable. 
+
+let a; will return typeof undefined because no data type is associated with it. 
+
+but let a = 5; will return number as data type for a; 
+
