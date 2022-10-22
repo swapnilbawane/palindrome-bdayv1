@@ -86,13 +86,13 @@ console.log(flag);
 
 let date = "20-3-2022";
 
-function nextDate (dataDate) { 
-daysinmonth array = [jan,feb]; 
+// function nextDate (dataDate) { 
+// daysinmonth array = [jan,feb]; 
 
-    day = day+1;
-if month = 2;
-{ if leap year if days > 29 --- next month day=1, month = 3; 
-} 
-else 
-if daysinmonth > 
-}
+//     day = day+1;
+// if month = 2;
+// { if leap year if days > 29 --- next month day=1, month = 3; 
+// } 
+// else 
+// if daysinmonth > 
+// }
