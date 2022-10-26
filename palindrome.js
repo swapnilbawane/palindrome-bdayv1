@@ -1,7 +1,4 @@
 
-
-
-
 // reverse a string 
 function reverseString() { 
     let oldString="20220106";
