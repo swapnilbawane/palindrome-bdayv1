@@ -50,18 +50,50 @@ function leapYear(yearNum) {
 }
 
 function createNextDate(dayNum,monthNum,yearNum) 
-    { 
+{ 
+        let daysinMonth = [31,28,31,30,31,30,31,31,30,31,30,31]; 
+
         dayNum = dayNum + 1; 
 
         if ( monthNum == 2)
         { 
-            if (leapYear(yearNum)) {
-                // go to next numth 
+            if (leapYear(yearNum)) 
+            {   
+                
+                if (dayNum > 29)
+                {
+                dayNum = 1; 
+                monthNum = 3;
+                }  
+            
+            else 
+            
+            { 
+                dayNum++; 
             }
         }
 
+        else {
+
+            if (dayNum>daysinMonth[monthNum-1] )
+            {
+                if(monthNum==12)
+                { 
+                    yearNum++;
+                    dayNum=1;
+                    monthNum=1;
+                }
+                else 
+                { 
+                dayNum = 1;
+                monthNum++;
+                } 
+            }
+
+        }
+
         return [dayNum,monthNum,yearNum]; 
-    }
+}
 
 function calcNextPalindromeDate(yyyy,dd,mm,isPalindrome) 
 { 
@@ -93,8 +125,13 @@ while(!isPalindrome)
         else 
         { isPalindrome = 0; }
     }
-  
+ 
+    dayNum = newDate[0]; 
+    monthNum = newDate[1]; 
+    yearNum = newDate[2];
+
 }
+ 
 
 return [counter,newDate]; 
 
