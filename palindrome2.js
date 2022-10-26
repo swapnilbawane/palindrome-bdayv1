@@ -36,7 +36,20 @@ function checkPalindromeForAllDates(diffDateFormatsArray) {
     }
 }
 
-createNextDate(dayNum,monthNum,yearNum) 
+function leapYear(yearNum) { 
+    if ( yearNum % 400 === 0)
+    { return 1; }
+
+    if ( yearNum % 100 === 0)
+    { return 1; }
+
+    if ( yearNum % 4 === 0)
+    { return 1; }
+
+    else return 0; 
+}
+
+function createNextDate(dayNum,monthNum,yearNum) 
     { 
         dayNum = dayNum + 1; 
 
