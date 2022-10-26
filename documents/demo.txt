@@ -1,0 +1,11 @@
+<h1> Let's find out if your birthday is palindrome or not! </h1>
+	<h3> Enter your birthday date: </h3>
+        <input type="date" id="input-date">
+        <div class="margins-bottom"> </div>
+        <button id="btn-show"> Tell me </button>
+        <p id="output-message" hidden></p>
+
+
+let inputDate = document.querySelector("#input-date"); 
+let btnShow = document.querySelector("#btn-show");
+let outputMessage = document.querySelector("#output-message"); 

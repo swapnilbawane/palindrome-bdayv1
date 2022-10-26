@@ -27,8 +27,8 @@ function createDifferentDateFormats(yyyy, mm, dd) {
 }
 
 function checkPalindromeForAllDates(diffDateFormatsArray) { 
+let list =[];
 
-    
     for ( let i=0; i<diffDateFormatsArray.length; i++)
     {
         if(reverseString(diffDateFormatsArray[i]) == diffDateFormatsArray[i])
@@ -36,6 +36,9 @@ function checkPalindromeForAllDates(diffDateFormatsArray) {
         else 
         list[i]=0;
     }
+
+ console.log("list"+list);  
+ return list; 
 }
 
 function leapYear(yearNum) { 
