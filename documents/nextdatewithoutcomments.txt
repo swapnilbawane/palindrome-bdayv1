@@ -1,0 +1,73 @@
+function leapYear(yearNum) 
+{
+  if (yearNum % 400 === 0) 
+  {
+    return 1;
+  }
+
+  if (yearNum % 100 === 0) 
+  {
+    return 1;
+  }
+
+  if (yearNum % 4 === 0) 
+  {
+    return 1;
+  } 
+  
+  else return 0;
+}
+
+function createNextDate(dayNum, monthNum, yearNum) 
+
+{
+  let daysinMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  dayNum = dayNum + 1;
+  
+  if (monthNum === 2) 
+  {
+
+    if (leapYear(yearNum)) 
+    {
+      if (dayNum > 29) 
+      {
+        dayNum = 1;
+        monthNum = 3;
+      }
+    } 
+    
+    else 
+    {
+    
+      if (dayNum > 28) 
+      {
+        dayNum = 1;
+        monthNum = 3;
+      }
+    }
+
+  } 
+  
+  else 
+  {
+    if (dayNum > daysinMonth[monthNum - 1]) 
+    {
+      
+      if (monthNum === 12) 
+      {
+        yearNum++;
+        dayNum = 1;
+        monthNum = 1;
+      } 
+      else 
+      {
+        dayNum = 1;
+        monthNum++;
+      }
+    }
+   }
+
+  return [dayNum, monthNum, yearNum];
+}
+

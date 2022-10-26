@@ -27,6 +27,8 @@ function createDifferentDateFormats(yyyy, mm, dd) {
 }
 
 function checkPalindromeForAllDates(diffDateFormatsArray) { 
+
+    
     for ( let i=0; i<diffDateFormatsArray.length; i++)
     {
         if(reverseString(diffDateFormatsArray[i]) == diffDateFormatsArray[i])
@@ -49,50 +51,57 @@ function leapYear(yearNum) {
     else return 0; 
 }
 
-function createNextDate(dayNum,monthNum,yearNum) 
-{ 
-        let daysinMonth = [31,28,31,30,31,30,31,31,30,31,30,31]; 
+function createNextDate(dayNum, monthNum, yearNum) 
 
-        dayNum = dayNum + 1; 
+{
+  let daysinMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-        if ( monthNum == 2)
-        { 
-            if (leapYear(yearNum)) 
-            {   
-                
-                if (dayNum > 29)
-                {
-                dayNum = 1; 
-                monthNum = 3;
-                }  
-            
-            else 
-            
-            { 
-                dayNum++; 
-            }
-        }
+  dayNum = dayNum + 1;
+  
+  if (monthNum === 2) 
+  {
 
-        else {
+    if (leapYear(yearNum)) 
+    {
+      if (dayNum > 29) 
+      {
+        dayNum = 1;
+        monthNum = 3;
+      }
+    } 
+    
+    else 
+    {
+    
+      if (dayNum > 28) 
+      {
+        dayNum = 1;
+        monthNum = 3;
+      }
+    }
 
-            if (dayNum>daysinMonth[monthNum-1] )
-            {
-                if(monthNum==12)
-                { 
-                    yearNum++;
-                    dayNum=1;
-                    monthNum=1;
-                }
-                else 
-                { 
-                dayNum = 1;
-                monthNum++;
-                } 
-            }
+  } 
+  
+  else 
+  {
+    if (dayNum > daysinMonth[monthNum - 1]) 
+    {
+      
+      if (monthNum === 12) 
+      {
+        yearNum++;
+        dayNum = 1;
+        monthNum = 1;
+      } 
+      else 
+      {
+        dayNum = 1;
+        monthNum++;
+      }
+    }
+   }
 
-        }
-
-        return [dayNum,monthNum,yearNum]; 
+  return [dayNum, monthNum, yearNum];
 }
 
 function calcNextPalindromeDate(yyyy,dd,mm,isPalindrome) 
@@ -139,10 +148,11 @@ return [counter,newDate];
 
 function calcPalindrome  (e) { 
 
+    var bDay = inputDate.value;
 
 if ( bDay !== "") // which means it is not empty field 
 { 
-    var bDay = inputDate.value;
+    
     var bDayArray = bDay.split("-"); 
 
     var yyyy = bDayArray[0];
@@ -182,3 +192,5 @@ else {
 }
 
 }
+
+btnShow.addEventListener("click",calcPalindrome); 
