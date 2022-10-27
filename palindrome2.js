@@ -152,7 +152,8 @@ return [counter,newDate];
 function calcPalindrome  (e) { 
 
     var bDay = inputDate.value;
-
+    let isPalindrome = 0;
+    
 if ( bDay !== "") // which means it is not empty field 
 { 
     

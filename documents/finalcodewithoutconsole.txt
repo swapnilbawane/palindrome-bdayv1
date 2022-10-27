@@ -163,11 +163,11 @@ function calcPalindrome(e) {
       
       outputMessage.style.display = "block";
       outputMessage.innerText =
-        "Oh. You missed the palindrome by " +
+        "Oh. You missed the palindrome by" +
         counter +
         " days." +
         " The next palindrome is now on " +
-        nextDate[0]+"-"+nextDate[1]+"-"+nextDate[2];
+        nextDate;
     }
 
     // if any results for dates is true then date is palindrome.
