@@ -1,8 +1,0 @@
-createDifferentDateFormats 
-reverseString
-checkPalindromeForAllDates
-leapYear
-createNextDate
-
-
-calcNextPalindromeDate
