@@ -145,11 +145,13 @@ function calcNextPalindromeDate(yyyy, mm, dd, isPalindrome) {
   return [counterCalc, returnDate];
 }
 
-function calcPalindrome(e) {
+function calcPalindrome(e) 
+{
   var bDay = inputDate.value;
   let isPalindrome = 0;
 
-  if (bDay !== "") {
+  if (bDay !== "") 
+{
     // which means it is not empty field
     var bDayArray = bDay.split("-");
 
@@ -180,9 +182,13 @@ function calcPalindrome(e) {
       }
     }
 
-    if (isPalindrome) {
+    if (isPalindrome) 
+  {
       outputMessage.innerText = "Yay. It is palindrome.";
-    } else {
+  } 
+    
+  else 
+  {
       console.log("year", yyyy, typeof yyyy);
       console.log("month", mm, typeof mm);
       console.log("date", dd, typeof dd);
@@ -206,13 +212,17 @@ function calcPalindrome(e) {
         nextDate[1] +
         "-" +
         nextDate[2];
-    }
+  }
 
     // if any results for dates is true then date is palindrome.
     // else calculate next palindrome date
-  } else {
+} 
+
+else 
+{
     outputMessage.innerText = "Hey, please input your birthday.";
   }
+
 }
 
 btnShow.addEventListener("click", calcPalindrome);
