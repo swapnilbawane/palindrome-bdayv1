@@ -145,6 +145,110 @@ function calcNextPalindromeDate(yyyy, mm, dd, isPalindrome) {
   return [counterCalc, returnDate];
 }
 
+function prevDate(yyyy, mm, dd) {
+  // function prevDate starts
+  var day = dd;
+  var month = mm;
+  var year = yyyy;
+
+  day = day - 1;
+
+  if (month === 3) {
+    if (day === 0) {
+      if (leapYear(year)) {
+        day = 29;
+        month = 2;
+      } // check if leap year
+      else {
+        day = 28;
+        month = 2;
+      } // non leap year
+    } // move to february if day = 0
+  } //if loop ends for month = 3 // other than 3rd month
+  else if (day === 0) {
+    if (
+      month === 2 ||
+      month === 4 ||
+      month === 6 ||
+      month === 9 ||
+      month === 11
+    ) {
+      day = 31;
+      month--;
+    } // moving to 31 days month
+    else {
+      if (month === 8) {
+        day = 31;
+        month--;
+      } // month = 8
+      else {
+        day = 30;
+        month--;
+      } // month is
+    }
+  } // day = 0
+
+  if (month === 0) {
+    day = 31;
+    month = 12;
+    year--;
+  }
+
+  return [year, month, day];
+} // function prevDate ends
+
+function previousPalindromeDateCalc(yyyy, mm, dd, isPalindrome) {
+  var day = Number(dd);
+  var month = Number(mm);
+  var year = Number(yyyy);
+  let counterCalc = 0;
+  let returnDate;
+
+  // for each date recieved, calculate next date, calculate if its palindrome for all formats, check if any palindrome in results lists, break loop and return counter value and date
+
+  do {
+    // do start
+    // converted to string to calculate prev date, function demands number type.
+
+    var prevDateMade = prevDate(year, month, day); // returns an array of numbers
+    counterCalc++;
+
+    // turn into standard format
+
+    var pYear = prevDateMade[0].toString();
+
+    if (prevDateMade[1] < 10) var pMonth = "0" + prevDateMade[1];
+    else pMonth = prevDateMade[1].toString();
+
+    if (prevDateMade[2] < 10) var pDay = "0" + prevDateMade[2];
+    else pDay = prevDateMade[2].toString();
+
+    // turn it into a string to calculate formats
+    var diffDateFormatsArray = createDifferentDateFormats(pYear, pMonth, pDay);
+
+    // send array of different formats into palindrome function.
+    var checkResultsForDates = checkPalindromeForAllDates(diffDateFormatsArray);
+
+    // received list which has palindrome or not values; navigating through it.
+    for (let i = 0; i < checkResultsForDates.length; i++) {
+      if (checkResultsForDates[i]) {
+        isPalindrome = 1;
+        returnDate = prevDateMade;
+      } else {
+        isPalindrome = 0;
+      }
+
+      if (isPalindrome) break;
+    }
+
+    year = prevDateMade[0];
+    month = prevDateMade[1];
+    day = prevDateMade[2];
+  } while (!isPalindrome);
+
+  return [counterCalc, returnDate];
+}
+
 function calcPalindrome(e) {
   var bDay = inputDate.value;
   let isPalindrome = 0;
@@ -188,24 +292,51 @@ function calcPalindrome(e) {
       console.log("date", dd, typeof dd);
       console.log("Palindrome value: ", isPalindrome, typeof isPalindrome);
 
-      let [counter, nextDate] = calcNextPalindromeDate(
+      let [counter1, nextDate] = calcNextPalindromeDate(
         yyyy,
         mm,
         dd,
         isPalindrome
       );
 
-      outputMessage.style.display = "block";
-      outputMessage.innerText =
-        "Oh. You missed the palindrome by " +
-        counter +
-        " days." +
-        " The next palindrome is now on " +
-        nextDate[0] +
-        "-" +
-        nextDate[1] +
-        "-" +
-        nextDate[2];
+      let [counter2, preDate] = previousPalindromeDateCalc(
+        yyyy,
+        mm,
+        dd,
+        isPalindrome
+      );
+
+      // counter 1 is next date
+      // counter 2 is prev date
+      // if next date counter is more than prev date display PREV date
+
+      // check if counter 1 is greater or counter 2 and display output message
+
+      if (counter1 > counter2) {
+        outputMessage.style.display = "block";
+        outputMessage.innerText =
+          "Oh. You missed the palindrome by " +
+          counter2 +
+          " days." +
+          " The previous palindrome was on " +
+          preDate[0] +
+          "-" +
+          preDate[1] +
+          "-" +
+          preDate[2];
+      } else {
+        outputMessage.style.display = "block";
+        outputMessage.innerText =
+          "Oh. You missed the palindrome by " +
+          counter1 +
+          " days." +
+          " The next palindrome is now on " +
+          nextDate[0] +
+          "-" +
+          nextDate[1] +
+          "-" +
+          nextDate[2];
+      }
     }
 
     // if any results for dates is true then date is palindrome.
