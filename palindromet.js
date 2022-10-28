@@ -278,10 +278,11 @@ function calcPalindrome(e) {
     for (let i = 0; i < checkResultsForDates.length; i++) {
       if (checkResultsForDates[i]) {
         isPalindrome = 1;
-        break;
       } else {
         isPalindrome = 0;
       }
+
+      if(isPalindrome) break;
     }
 
     if (isPalindrome) {
