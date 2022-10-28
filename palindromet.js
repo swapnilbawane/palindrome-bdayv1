@@ -94,20 +94,6 @@ function calcNextPalindromeDate(yyyy, mm, dd, isPalindrome) {
     let newDate = createNextDate(dayNum, monthNum, yearNum);
     counterCalc++; // calculate how many days far you have come from palindrome.
 
-    if (counterCalc === 20) {
-      console.log("20");
-    }
-
-    if (counterCalc === 40) {
-      console.log("40");
-    }
-    if (counterCalc === 60) {
-      console.log("60");
-    }
-    if (counterCalc === 80) {
-      console.log("80");
-    }
-
     let day;
     let month;
     let year = newDate[2].toString();
@@ -267,31 +253,31 @@ function calcPalindrome(e) {
       var dd = "0" + Number(bDayArray[2]);
     } else var dd = bDayArray[2];
 
-    console.log(dd, mm, yyyy);
+   
 
     // create different date formats
     var diffDateFormatsArray = createDifferentDateFormats(yyyy, mm, dd);
-    console.log(diffDateFormatsArray);
+    
     var checkResultsForDates = checkPalindromeForAllDates(diffDateFormatsArray);
-    console.log("Palindrome array list:" + checkResultsForDates);
+    
 
     for (let i = 0; i < checkResultsForDates.length; i++) {
       if (checkResultsForDates[i]) {
-        isPalindrome = 1;
+        isPalindrome = 1; 
       } else {
         isPalindrome = 0;
+        
       }
 
       if(isPalindrome) break;
     }
 
+    
     if (isPalindrome) {
+      outputMessage.style.display = "block";
       outputMessage.innerText = "Yay. It is palindrome.";
     } else {
-      console.log("year", yyyy, typeof yyyy);
-      console.log("month", mm, typeof mm);
-      console.log("date", dd, typeof dd);
-      console.log("Palindrome value: ", isPalindrome, typeof isPalindrome);
+      
 
       let [counter1, nextDate] = calcNextPalindromeDate(
         yyyy,
